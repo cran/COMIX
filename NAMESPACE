@@ -1,0 +1,3 @@
+useDynLib(COMIX, .registration = TRUE)
+importFrom(Rcpp, evalCpp)
+export(comix, relabelChain, calibrate, calibrateNoDist, summarizeChain, transform_params)
