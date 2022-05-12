@@ -40,6 +40,7 @@
 #' \item \code{t}: An integer vector, same length as the number of rows of \code{Y}, with cluster labels
 #' between \code{1} and \code{K}.
 #' }
+#' @param ncores The number of CPU cores to utilize in parallel. Defaults to 2.
 #' @return An object of class COMIX, a list of 4:
 #' \itemize{
 #' \code{chain}, a named list:
@@ -163,7 +164,7 @@
 #' # And compare those to
 #' cbind(alpha1, alpha2)
 #' @export
-comix = function(Y, C, prior = NULL, pmc = NULL, state = NULL)
+comix = function(Y, C, prior = NULL, pmc = NULL, state = NULL, ncores = 2)
 {
   Y = as.matrix(Y)
   p = ncol(Y)
@@ -237,7 +238,7 @@ comix = function(Y, C, prior = NULL, pmc = NULL, state = NULL)
   C = C - 1
   state$t = state$t - 1
   
-  ans = perturbedSNcpp(Y, C, prior, pmc, state, initParticles = NULL, init=T)
+  ans = perturbedSNcpp(Y, C, prior, pmc, state, initParticles = NULL, init=T, ncores=2)
   colnames(ans$data$Y) = colnames(Y)
   ans$data$C = ans$data$C + 1
   ans$chain$t = ans$chain$t + 1

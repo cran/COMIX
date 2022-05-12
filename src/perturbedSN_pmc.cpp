@@ -15,7 +15,8 @@ PMC::PMC(arma::mat Y,
          Rcpp::List pmc,
          Rcpp::List state, 
          Rcpp::List initParticles,
-         bool init) : Y(Y), C(C)
+         bool init,
+         int ncores) : Y(Y), C(C)
 {
   p = Y.n_cols;
   n = Y.n_rows;
@@ -58,10 +59,10 @@ PMC::PMC(arma::mat Y,
   merge_par = Rcpp::as<double>(prior["merge_par"]);
   zeta = Rcpp::as<double>(prior["zeta"]);
 
-  main_loop(state, prior, initParticles, init);
+  main_loop(state, prior, initParticles, init, ncores);
 }
 
-void PMC::main_loop(Rcpp::List state, Rcpp::List prior, Rcpp::List initParticles, bool init) {
+void PMC::main_loop(Rcpp::List state, Rcpp::List prior, Rcpp::List initParticles, bool init, int ncores) {
 
   int km = 0;
   
@@ -182,7 +183,7 @@ void PMC::main_loop(Rcpp::List state, Rcpp::List prior, Rcpp::List initParticles
       nResampled(k) = Rcpp::as<int>(iterSummary["nResampled"]);
     }
     
-    T = sampleT( xi, Omega, alpha, logW );
+    T = sampleT( xi, Omega, alpha, logW, ncores );
     
     if( (it+1 > num_burnin) && ((it+1) % num_thin == 0))
     {
@@ -946,7 +947,8 @@ Rcpp::List PMC::iter(uvec T,
 arma::uvec PMC::sampleT( arma::cube xi,
                          arma::cube Omega,
                          arma::mat alpha,
-                         arma::mat logW )
+                         arma::mat logW,
+                         int ncores)
 {
   uvec T(n);
   int k;
@@ -954,7 +956,10 @@ arma::uvec PMC::sampleT( arma::cube xi,
   uvec C_j;
   mat PT(n, K);
   PT.fill(0);
+#if defined(_OPENMP)
+#pragma omp parallel num_threads(ncores)
 #pragma omp parallel for private(j, C_j)
+#endif
   for (k=0; k<K; k++) {
     uvec k_idx(1);
     k_idx(0) = k;
@@ -972,7 +977,10 @@ arma::uvec PMC::sampleT( arma::cube xi,
   bool not_assigned;
   vec prob;
   vec probsum;
+#if defined(_OPENMP)
+#pragma omp parallel num_threads(ncores)
 #pragma omp parallel for private(k, prob, probsum, x, not_assigned)
+#endif
   for (int i=0; i<n; i++) {
     prob = PT.row(i).t();
     probsum = cumsum(prob);

@@ -60,8 +60,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // perturbedSNcpp
-Rcpp::List perturbedSNcpp(arma::mat Y, arma::uvec C, Rcpp::List prior, Rcpp::List pmc, Rcpp::List state, Rcpp::List initParticles, bool init);
-RcppExport SEXP _COMIX_perturbedSNcpp(SEXP YSEXP, SEXP CSEXP, SEXP priorSEXP, SEXP pmcSEXP, SEXP stateSEXP, SEXP initParticlesSEXP, SEXP initSEXP) {
+Rcpp::List perturbedSNcpp(arma::mat Y, arma::uvec C, Rcpp::List prior, Rcpp::List pmc, Rcpp::List state, Rcpp::List initParticles, bool init, int ncores);
+RcppExport SEXP _COMIX_perturbedSNcpp(SEXP YSEXP, SEXP CSEXP, SEXP priorSEXP, SEXP pmcSEXP, SEXP stateSEXP, SEXP initParticlesSEXP, SEXP initSEXP, SEXP ncoresSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -72,7 +72,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< Rcpp::List >::type state(stateSEXP);
     Rcpp::traits::input_parameter< Rcpp::List >::type initParticles(initParticlesSEXP);
     Rcpp::traits::input_parameter< bool >::type init(initSEXP);
-    rcpp_result_gen = Rcpp::wrap(perturbedSNcpp(Y, C, prior, pmc, state, initParticles, init));
+    Rcpp::traits::input_parameter< int >::type ncores(ncoresSEXP);
+    rcpp_result_gen = Rcpp::wrap(perturbedSNcpp(Y, C, prior, pmc, state, initParticles, init, ncores));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -108,7 +109,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_COMIX_hungarian_cc", (DL_FUNC) &_COMIX_hungarian_cc, 1},
     {"_COMIX_calib", (DL_FUNC) &_COMIX_calib, 8},
     {"_COMIX_calibNoDist", (DL_FUNC) &_COMIX_calibNoDist, 8},
-    {"_COMIX_perturbedSNcpp", (DL_FUNC) &_COMIX_perturbedSNcpp, 7},
+    {"_COMIX_perturbedSNcpp", (DL_FUNC) &_COMIX_perturbedSNcpp, 8},
     {"_COMIX_KL", (DL_FUNC) &_COMIX_KL, 6},
     {"_COMIX_relabel", (DL_FUNC) &_COMIX_relabel, 1},
     {NULL, NULL, 0}

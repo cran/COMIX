@@ -4,7 +4,7 @@
 \alias{comix}
 \title{This function generates a sample from the posterior of COMIX.}
 \usage{
-comix(Y, C, prior = NULL, pmc = NULL, state = NULL)
+comix(Y, C, prior = NULL, pmc = NULL, state = NULL, ncores = 2)
 }
 \arguments{
 \item{Y}{Matrix of the data. Each row represents an observation.}
@@ -50,6 +50,8 @@ is \code{merge_step = TRUE}.
 \item \code{t}: An integer vector, same length as the number of rows of \code{Y}, with cluster labels
 between \code{1} and \code{K}.
 }}
+
+\item{ncores}{The number of CPU cores to utilize in parallel. Defaults to 2.}
 }
 \value{
 An object of class COMIX, a list of 4:

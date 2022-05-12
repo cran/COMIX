@@ -13,8 +13,8 @@ calibNoDist <- function(Y, C, Z, mu_input, mu_dim, mu0_input, mu0_dim, ref) {
     .Call(`_COMIX_calibNoDist`, Y, C, Z, mu_input, mu_dim, mu0_input, mu0_dim, ref)
 }
 
-perturbedSNcpp <- function(Y, C, prior, pmc, state, initParticles, init) {
-    .Call(`_COMIX_perturbedSNcpp`, Y, C, prior, pmc, state, initParticles, init)
+perturbedSNcpp <- function(Y, C, prior, pmc, state, initParticles, init, ncores) {
+    .Call(`_COMIX_perturbedSNcpp`, Y, C, prior, pmc, state, initParticles, init, ncores)
 }
 
 KL <- function(xi_1, xi_2, Omega_1, Omega_2, alpha_1, alpha_2) {

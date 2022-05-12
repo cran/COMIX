@@ -1,8 +1,11 @@
 #ifndef GIBBS_H
 #define GIBBS_H
 
-#include "RcppArmadillo.h"
+#ifdef _OPENMP
 #include <omp.h>
+#endif
+
+#include "RcppArmadillo.h"
 
 using namespace Rcpp;
 using namespace arma;
@@ -43,7 +46,7 @@ private:
 
   /* --- functions --- */
   void main_loop(Rcpp::List state, Rcpp::List prior, 
-                 Rcpp::List initParticles, bool init);
+                 Rcpp::List initParticles, bool init, int ncores);
   
   double sampleA0(double a0, arma::umat N, double a_par);
     
@@ -81,7 +84,8 @@ private:
   arma::uvec sampleT( arma::cube xi,
                       arma::cube Omega,
                       arma::mat alpha,
-                      arma::mat logW );
+                      arma::mat logW,
+                      int ncores);
     
 public:
   // constructor 
@@ -90,7 +94,7 @@ public:
        Rcpp::List prior,
        Rcpp::List pmc,
        Rcpp::List state,
-       Rcpp::List initParticles, bool init );
+       Rcpp::List initParticles, bool init, int ncores );
   
   Rcpp::List get_chain();
 };

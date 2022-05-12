@@ -11,7 +11,7 @@ Rcpp::List perturbedSNcpp( arma::mat Y,
                            Rcpp::List prior,
                            Rcpp::List pmc,
                            Rcpp::List state,
-                           Rcpp::List initParticles, bool init )
+                           Rcpp::List initParticles, bool init, int ncores )
 {
   Rcpp::RNGScope scope;  
   PMC H(    Y,
@@ -19,7 +19,7 @@ Rcpp::List perturbedSNcpp( arma::mat Y,
             prior,
             pmc,
             state,
-            initParticles, init
+            initParticles, init, ncores
   );
   
   List chain = H.get_chain();
