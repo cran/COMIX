@@ -109,4 +109,6 @@ colSums(njk)
 res_summary$alpha[ , unique(res_summary$t)]
 # And compare those to
 cbind(alpha1, alpha2)
+
+# (see vignette for a more detailed example)
 }

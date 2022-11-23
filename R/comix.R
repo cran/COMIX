@@ -163,6 +163,8 @@
 #' res_summary$alpha[ , unique(res_summary$t)]
 #' # And compare those to
 #' cbind(alpha1, alpha2)
+#' 
+#' # (see vignette for a more detailed example)
 #' @export
 comix = function(Y, C, prior = NULL, pmc = NULL, state = NULL, ncores = 2)
 {

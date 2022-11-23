@@ -94,6 +94,8 @@
 #' res_summary$alpha[ , unique(res_summary$t)]
 #' # And compare those to
 #' cbind(alpha1, alpha2)
+#' 
+#' # (see vignette for a more detailed example)
 #' @export
 calibrate <- function(x, reference.group = NULL)
 {
@@ -207,6 +209,8 @@ calibrate <- function(x, reference.group = NULL)
 #' res_summary$alpha[ , unique(res_summary$t)]
 #' # And compare those to
 #' cbind(alpha1, alpha2)
+#' 
+#' # (see vignette for a more detailed example)
 #' @export
 calibrateNoDist <- function(x, reference.group = NULL)
 {
@@ -307,6 +311,8 @@ calibrateNoDist <- function(x, reference.group = NULL)
 #' res_summary$alpha[ , unique(res_summary$t)]
 #' # And compare those to
 #' cbind(alpha1, alpha2)
+#' 
+#' # (see vignette for a more detailed example)
 #' @export
 relabelChain = function(res) {
   res$chain$t = res$chain$t - 1
@@ -477,6 +483,8 @@ Mode = function(x) {
 #' res_summary$alpha[ , unique(res_summary$t)]
 #' # And compare those to
 #' cbind(alpha1, alpha2)
+#' 
+#' # (see vignette for a more detailed example)
 #' @export
 summarizeChain = function( res ) {
   chainSummary = list()

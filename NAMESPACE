@@ -1,3 +1,12 @@
 useDynLib(COMIX, .registration = TRUE)
 importFrom(Rcpp, evalCpp)
-export(comix, relabelChain, calibrate, calibrateNoDist, summarizeChain, transform_params)
+importFrom(rlang, .data)
+importFrom(tidyr, pivot_wider, expand_grid)
+importFrom(stringr, str_split)
+importFrom(grDevices, rgb)
+importFrom(stats, qnorm, reorder, acf)
+importFrom(methods, is)
+import(dplyr, ggplot2, coda)
+export(comix, relabelChain, calibrate, calibrateNoDist, summarizeChain, transform_params,
+       acfParams, effectiveSampleSize, plotEffectiveSampleSize, gewekeParams, plotGewekeParams,
+       heidelParams, plotHeidelParams, tidyChain, plotTracePlots)
