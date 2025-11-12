@@ -1,4 +1,4 @@
-860757c2418a7acdf11241f8c9cf9ecc *DESCRIPTION
+09a281d7ee56db17cdf10527b8f24a52 *DESCRIPTION
 0be71778ac94fe4650d5beeff601a294 *NAMESPACE
 cdc5c93ca711dd36400f3d5c5a4ad243 *R/RcppExports.R
 b7c0ab3e7d4d8d2a150ef702ca9d9d1a *R/acf_plots.R
@@ -9,7 +9,7 @@ d56a87f597177b603e0e999f8a0b69ff *R/geweke.R
 3ea29bd0da4671f5996d1b11b25cad69 *R/tidy_chain.R
 0baafc1219be04f738fa939916f2e7a6 *R/trace_plot.R
 25ab1dc46a7d5d5fc83b354208725cfb *R/utilities.R
-9450be92c1ba2db55ba11919e2036121 *build/vignette.rds
+e787228e87136b54981a3ec1ff7b3eb1 *build/vignette.rds
 1b9c31c5a6d61096c278b8d328f0503c *inst/doc/vignette.html
 2e05752edeeb43c8893b5bb5839560a8 *inst/doc/vignette.html.asis
 173a0f06eb1b2255908e64289c1eebdc *man/acfParams.Rd
@@ -27,7 +27,7 @@ c7aa79b28b9a642835bdc8d19709ad1f *man/plotGewekeParams.Rd
 07918acd592d95a8536e8a1835cace34 *man/summarizeChain.Rd
 bdf3b7751f1b932a4757261990213a31 *man/tidyChain.Rd
 7f90e63835202d5469f894319a76f4e0 *man/transform_params.Rd
-950e864005254da00dd6588436756f16 *src/Makevars
+29fb50d394bebfd68ac330cc5e3d39f3 *src/Makevars
 2b91e6b6fb16c7c9c6ef7bcb223f2b0c *src/RcppExports.cpp
 22f9cfb8acb87c9ecabd9691fc0105ae *src/armaMunkres.cpp
 eab48e92bbb7ee9737a43ff081337251 *src/armaMunkres.h
