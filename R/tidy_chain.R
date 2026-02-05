@@ -94,16 +94,14 @@ tidyChain <- function(res, params = c("t", "w", "xi", "xi0", "psi", "G", "E", "e
       table(sum_chain$t) / sum(table(sum_chain$t))
     ) %>%
     rename(c("k" = "Var1", "frq_t" = "Freq"))
-  dplyr.summarise.inform <- options()$dplyr.summarise.inform
-  options(dplyr.summarise.inform = FALSE)
   attributes(tidy_chain)$local_freq_t <-
     tibble(x = (P + 1) / 2, k = sum_chain$t, j = c(res$data$C)) %>%
     group_by(.data$j) %>%
-    summarize(Freq = table(.data$k) / sum(table(.data$k))) %>%
+    # summarize(Freq = table(.data$k) / sum(table(.data$k))) %>%
+    reframe(Freq = table(.data$k) / sum(table(.data$k))) %>%
     mutate(x = (P + 1) / 2, k = names(.data$Freq), frq_t = as.numeric(.data$Freq)) %>%
     select(-.data$Freq)
-  options(dplyr.summarise.inform = dplyr.summarise.inform)
-  
+
 
   # t -----
   if ("t" %in% params) {

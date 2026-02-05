@@ -1,7 +1,7 @@
 Package: COMIX
 Type: Package
 Title: Coarsened Mixtures of Hierarchical Skew Kernels
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: c(person("S.", "Gorsky", role = c("aut", "cre"),
                      email = "sgorsky@umass.edu"),
               person("C.", "Chan", role = "ctb", 
@@ -18,10 +18,10 @@ LinkingTo: Rcpp, RcppArmadillo, RcppEigen, RcppNumerical
 RoxygenNote: 7.3.3
 VignetteBuilder: R.rsp
 NeedsCompilation: yes
-Packaged: 2025-11-12 00:03:50 UTC; hhh
+Packaged: 2026-02-05 03:12:27 UTC; hhh
 Author: S. Gorsky [aut, cre],
   C. Chan [ctb],
   L. Ma [ctb]
 Maintainer: S. Gorsky <sgorsky@umass.edu>
 Repository: CRAN
-Date/Publication: 2025-11-12 00:20:02 UTC
+Date/Publication: 2026-02-05 06:40:02 UTC
